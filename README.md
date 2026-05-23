@@ -86,3 +86,4 @@ Debe entregar un proyecto en Java con la solución completa
 ---
 
 **Nota:** Aquí no gana el que más teclea; gana el que mejor piensa. Java solo hace lo que usted le diga... y cobra caro los descuidos.
+yo vine el lunes
