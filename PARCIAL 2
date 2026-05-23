@@ -1,0 +1,115 @@
+import java.util.Scanner;
+
+public class Comedor {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Cantidad de comidas: ");
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        String comida[] = new String[n];
+        String tipo[] = new String[n];
+
+        int disponible[] = new int[n];
+        int consumida[] = new int[n];
+
+        for (int i = 0; i < n; i++) {
+
+            System.out.println("\nComida " + (i + 1));
+
+            System.out.print("Nombre: ");
+            comida[i] = sc.nextLine();
+
+            System.out.print("Tipo: ");
+            tipo[i] = sc.nextLine();
+
+            System.out.print("Cantidad disponible: ");
+            disponible[i] = sc.nextInt();
+            sc.nextLine();
+        }
+
+        System.out.print("\nCantidad estudiantes: ");
+        int estudiantes = sc.nextInt();
+        sc.nextLine();
+
+        for (int i = 0; i < estudiantes; i++) {
+
+            System.out.print("\nNombre estudiante: ");
+            String nombre = sc.nextLine();
+
+            System.out.print("Comida deseada: ");
+            String buscar = sc.nextLine();
+
+            boolean existe = false;
+
+            for (int j = 0; j < n; j++) {
+
+                if (comida[j].equalsIgnoreCase(buscar)) {
+
+                    existe = true;
+
+                    if (disponible[j] > 0) {
+
+                        disponible[j]--;
+                        consumida[j]++;
+
+                        System.out.println("Comida entregada");
+
+                    } else {
+
+                        System.out.println("Comida agotada");
+                    }
+                }
+            }
+
+            if (!existe) {
+
+                System.out.println("La comida no existe");
+            }
+        }
+
+        int total = 0;
+
+        int mayor = consumida[0];
+        int menor = consumida[0];
+
+        String comidaMayor = comida[0];
+        String comidaMenor = comida[0];
+
+        System.out.println("\nREPORTE FINAL");
+
+        for (int i = 0; i < n; i++) {
+
+            System.out.println("\nComida: " + comida[i]);
+
+            System.out.println("Disponible: " + disponible[i]);
+
+            System.out.println("Consumida: " + consumida[i]);
+
+            total += consumida[i];
+
+            if (consumida[i] > mayor) {
+
+                mayor = consumida[i];
+                comidaMayor = comida[i];
+            }
+
+            if (consumida[i] < menor) {
+
+                menor = consumida[i];
+                comidaMenor = comida[i];
+            }
+        }
+
+        System.out.println("\nTotal servidas: " + total);
+
+        System.out.println("Mayor consumo: "
+                + comidaMayor);
+
+        System.out.println("Menor consumo: "
+                + comidaMenor);
+    }
+}
